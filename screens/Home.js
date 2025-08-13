@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Projeta+</Text>
+      <Text style={styles.title}>Projeta+@@@@@ww</Text>
 
       <TouchableOpacity style={styles.buttonRed}>
         <Text style={styles.textWhite}>Emergência</Text>
