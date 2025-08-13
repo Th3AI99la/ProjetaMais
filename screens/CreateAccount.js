@@ -1,11 +1,12 @@
 // Em screens/CreateAccount.js
 
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StatusBar, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StatusBar, ScrollView, KeyboardAvoidingView, Platform, Animated  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import styles from '../styles/CreateAccountStyles';
 import useCreateAccountForm from '../hooks/useCreateAccountForm';
+import useCreateAccountAnimation from '../hooks/useCreateAccountAnimation'; 
 
 export default function CreateAccount() {
   const navigation = useNavigation();
@@ -18,12 +19,15 @@ export default function CreateAccount() {
     password, setPassword,
     confirmPassword, setConfirmPassword, doPasswordsMatch
   } = useCreateAccountForm();
+  
+  const animatedStyle = useCreateAccountAnimation();
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
       <StatusBar barStyle="light-content" />
       <ScrollView contentContainerStyle={styles.scrollContainerContent} keyboardShouldPersistTaps="handled">
         
+        <Animated.View style={animatedStyle}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Feather name="arrow-left" size={30} color="white" />
@@ -92,6 +96,7 @@ export default function CreateAccount() {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Criar Conta</Text>
         </TouchableOpacity>
+      </Animated.View>
 
       </ScrollView>
     </KeyboardAvoidingView>
