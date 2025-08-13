@@ -1,14 +1,20 @@
+// Em screens/History.js
 import React from 'react';
-import { View, Text } from 'react-native';
-import Header from '../components/Header'; 
+import { View, Text, StatusBar } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 import styles from '../styles/HistoryStyles';
 
-export default function History({ navigation }) {
+// A prop 'navigation' não é mais necessária aqui, pois o Header agora é gerenciado pelo Navegador
+export default function History() {
   return (
     <View style={styles.container}>
-      <Header title="Histórico" onMenuPress={() => navigation.openDrawer()} />
+      <StatusBar barStyle="light-content" />
+      {/* O Header foi removido daqui. O Navigation.js já o adiciona. */}
+      
       <View style={styles.content}>
-        <Text style={styles.text}>Tela de Histórico de Denúncias</Text>
+        <Feather name="clock" size={60} color="rgba(255, 255, 255, 0.5)" style={styles.icon} />
+        <Text style={styles.title}>Nenhum Histórico</Text>
+        <Text style={styles.subtitle}>Suas denúncias aparecerão aqui quando forem enviadas.</Text>
       </View>
     </View>
   );

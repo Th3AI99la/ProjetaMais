@@ -1,17 +1,27 @@
+// Em screens/Emergency.js
+
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, StatusBar, Image } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  ScrollView, 
+  StatusBar, 
+  Image, 
+  Animated // 1. IMPORTANTE: Importar o 'Animated'
+} from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import MapView, { Marker } from 'react-native-maps';
 import styles from '../styles/EmergencyStyles';
 
 // Importa todos os nossos componentes e hooks separados
 import useEmergencyForm from '../hooks/useEmergencyForm';
-import Header from '../components/Header';
-import ViolenceTypeModal from '../components/ViolenceTypeModal';
+import useEmergencyAnimation from '../hooks/useEmergencyAnimation'; // 2. IMPORTANTE: Importar o hook da animação
 import MediaPreviewModal from '../components/MediaPreviewModal';
+import ViolenceTypeModal from '../components/ViolenceTypeModal';
 
 export default function Emergency() {
-  // 1. CHAMA O HOOK para pegar todos os dados e funções prontas
   const {
     violenceType, setViolenceType,
     description, setDescription,
@@ -20,10 +30,17 @@ export default function Emergency() {
     modalVisible, setModalVisible
   } = useEmergencyForm();
   
-  // Estado para controlar a visibilidade do modal de MÍDIAS
+  // 3. CHAMA O HOOK da animação para pegar os estilos
+  const { 
+    section1Style, 
+    section2Style, 
+    section3Style, 
+    section4Style, 
+    buttonStyle 
+  } = useEmergencyAnimation();
+  
   const [mediaModalVisible, setMediaModalVisible] = useState(false);
 
-  // Função simples para criar o texto de resumo (ex: "2 fotos e 1 vídeo anexados")
   const renderMediaSummary = () => {
     const photoCount = media.filter(item => item.type === 'image').length;
     const videoCount = media.filter(item => item.type === 'video').length;
@@ -35,29 +52,26 @@ export default function Emergency() {
     return [photoText, videoText].filter(Boolean).join(' e ') + ' anexado(s)';
   };
 
-  // --- RENDERIZAÇÃO (O que aparece na tela) ---
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <Header title="Emergência" onMenuPress={() => {}} onProfilePress={() => {}} />
+      {/* O Header é inserido pelo Navigation.js, não aqui */}
 
-      {/* Renderiza o modal de tipo de violência, mas ele fica invisível até ser chamado */}
       <ViolenceTypeModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
         onSelect={setViolenceType}
       />
       
-      {/* Renderiza o modal de visualização de mídias */}
       <MediaPreviewModal 
         visible={mediaModalVisible} 
         onClose={() => setMediaModalVisible(false)} 
         media={media} 
       />
 
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* Seção Tipo de Violência */}
-        <View style={styles.section}>
+      <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+        {/* 4. APLICA OS ESTILOS ANIMADOS A CADA SEÇÃO */}
+        <Animated.View style={[styles.section, section1Style]}>
           <Text style={styles.label}>Tipo de Violência</Text>
           <TouchableOpacity style={styles.pickerButton} onPress={() => setModalVisible(true)}>
             <Text style={violenceType ? styles.pickerButtonText : styles.pickerButtonPlaceholder}>
@@ -65,10 +79,9 @@ export default function Emergency() {
             </Text>
             <Feather name="chevron-down" size={24} color="#333" />
           </TouchableOpacity>
-        </View>
+        </Animated.View>
 
-        {/* Seção Descrição */}
-        <View style={styles.section}>
+        <Animated.View style={[styles.section, section2Style]}>
           <Text style={styles.label}>Descrição Detalhada</Text>
           <TextInput
             style={styles.descriptionInput}
@@ -77,14 +90,12 @@ export default function Emergency() {
             value={description}
             onChangeText={setDescription}
           />
-        </View>
+        </Animated.View>
 
-        {/* Seção Localização */}
-        <View style={styles.section}>
+        <Animated.View style={[styles.section, section3Style]}>
           <Text style={styles.label}>Localização</Text>
           <View style={styles.locationBox}>
             <Text style={styles.addressText}>{address}</Text>
-            {/* O mapa só aparece se a localização for obtida com sucesso */}
             {location && (
               <MapView
                 style={styles.map}
@@ -99,29 +110,26 @@ export default function Emergency() {
               </MapView>
             )}
           </View>
-        </View>
+        </Animated.View>
 
-        {/* Seção Mídia */}
-        <View style={styles.section}>
+        <Animated.View style={[styles.section, section4Style]}>
           <Text style={styles.label}>Anexar Mídia</Text>
-          {/* Este botão chama a função pickMedia que está no hook */}
           <TouchableOpacity style={styles.mediaButton} onPress={pickMedia}>
             <Feather name="camera" size={20} color="#264653" />
             <Text style={styles.mediaButtonText}>Adicionar Fotos ou Vídeos</Text>
           </TouchableOpacity>
-          
-          {/* Se houver mídias, mostra o resumo. Clicar no resumo abre o modal de preview */}
           {media.length > 0 && (
             <TouchableOpacity style={styles.mediaSummary} onPress={() => setMediaModalVisible(true)}>
               <Text style={styles.mediaSummaryText}>{renderMediaSummary()}</Text>
             </TouchableOpacity>
           )}
-        </View>
+        </Animated.View>
 
-        {/* Botão Enviar */}
-        <TouchableOpacity style={styles.submitButton}>
-          <Text style={styles.submitButtonText}>ENVIAR DENÚNCIA</Text>
-        </TouchableOpacity>
+        <Animated.View style={buttonStyle}>
+          <TouchableOpacity style={styles.submitButton}>
+            <Text style={styles.submitButtonText}>ENVIAR DENÚNCIA</Text>
+          </TouchableOpacity>
+        </Animated.View>
       </ScrollView>
     </View>
   );
