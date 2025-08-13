@@ -1,3 +1,4 @@
+// Em styles/CreateAccountStyles.js
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -52,7 +53,7 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: '#1d3557',
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'Poppins-Bold',
   },
   errorContainer: {
@@ -64,7 +65,7 @@ export default StyleSheet.create({
   errorMessage: {
     color: '#e63946',
     fontFamily: 'Poppins-Regular',
-    fontSize: 14,
+    fontSize: 13,
     marginLeft: 5,
   },
 });
