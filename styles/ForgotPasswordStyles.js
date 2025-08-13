@@ -82,4 +82,16 @@ export default StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Poppins-Bold',
   },
+    errorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 5,
+    marginLeft: 15,
+  },
+   errorMessage: {
+    color: '#e63946',
+    fontFamily: 'Poppins-Regular',
+    fontSize: 14,
+    marginLeft: 5,
+  }
 });
