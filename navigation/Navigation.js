@@ -2,17 +2,18 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Feather } from '@expo/vector-icons';
+import { Alert } from 'react-native'; 
 
-// Importe as telas e componentes
+// Importe as das telas
 import Home from '../screens/Home';
 import Login from '../screens/Login';
 import ForgotPassword from '../screens/ForgotPassword';
 import CreateAccount from '../screens/CreateAccount';
 import Emergency from '../screens/Emergency';
 import History from '../screens/History';
+import Anonymous from '../screens/Anonymous'; 
 import CustomDrawerContent from '../components/CustomDrawerContent';
-import Header from '../components/Header';
-import Anonymous from '../screens/Anonymous';    
+import Header from '../components/Header'; 
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -23,9 +24,8 @@ function MainDrawer() {
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{ 
         headerShown: false, 
-        drawerActiveBackgroundColor: '#e63946',
         drawerActiveTintColor: '#fff',
-        drawerInactiveTintColor: 'white',
+        drawerInactiveTintColor: 'rgba(255, 255, 255, 0.7)', 
         drawerLabelStyle: {fontFamily: 'Poppins-Regular', fontSize: 15 }
       }}
     >
@@ -33,14 +33,15 @@ function MainDrawer() {
         name="Início" 
         component={Home} 
         options={{
+          drawerActiveBackgroundColor: '#1d3557', 
           drawerIcon: ({color}) => <Feather name="home" size={22} color={color} />
         }}
       />
-
       <Drawer.Screen 
         name="Emergência" 
         component={Emergency} 
         options={{
+          drawerActiveBackgroundColor: '#e63946', 
           headerShown: true,
           header: ({ navigation }) => (
             <Header 
@@ -57,12 +58,14 @@ function MainDrawer() {
         name="Anônimo" 
         component={Anonymous} 
         options={{
+          drawerActiveBackgroundColor: '#3700B3', 
           headerShown: true,
           header: ({ navigation }) => (
             <Header 
               title="Modo Anônimo" 
               onMenuPress={() => navigation.openDrawer()}
-              backgroundColor="#3700B3" // Uma cor escura, tipo anônimo
+              onProfilePress={() => Alert.alert("Perfil Clicado")}
+              backgroundColor="#3700B3" 
             />
           ),
           drawerIcon: ({color}) => <Feather name="shield" size={22} color={color} />
@@ -72,6 +75,7 @@ function MainDrawer() {
         name="Histórico" 
         component={History} 
         options={{
+          drawerActiveBackgroundColor: '#1d3557', // Cor ativa para Histórico
           headerShown: true,
           header: ({ navigation }) => (
             <Header 
@@ -87,7 +91,6 @@ function MainDrawer() {
   );
 }
 
-// O Stack Navigator principal 
 export default function Navigation() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
