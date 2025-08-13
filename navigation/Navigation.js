@@ -26,7 +26,7 @@ function MainDrawer() {
         drawerActiveBackgroundColor: '#e63946',
         drawerActiveTintColor: '#fff',
         drawerInactiveTintColor: '#333',
-        drawerLabelStyle: { marginLeft: -20, fontFamily: 'Poppins-Regular', fontSize: 15 }
+        drawerLabelStyle: {fontFamily: 'Poppins-Regular', fontSize: 15 }
       }}
     >
       <Drawer.Screen 

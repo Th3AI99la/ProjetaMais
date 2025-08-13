@@ -3,7 +3,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { Feather } from '@expo/vector-icons'; // <-- ESTA LINHA ESTAVA FALTANDO
+import { Feather } from '@expo/vector-icons';
 
 export default function CustomDrawerContent(props) {
   const handleLogout = () => {
@@ -19,19 +19,26 @@ export default function CustomDrawerContent(props) {
 
   return (
     <View style={{flex: 1}}>
-      <DrawerContentScrollView {...props} contentContainerStyle={{backgroundColor: '#1d2362'}}>
+      <DrawerContentScrollView 
+        {...props} 
+        contentContainerStyle={{backgroundColor: '#1d3557', flex: 1}}
+      >
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Projeta+</Text>
         </View>
-        <View style={{backgroundColor: '#fff', paddingTop: 10}}>
+
+        <View style={styles.drawerItemsContainer}>
           <DrawerItemList {...props} />
         </View>
+
       </DrawerContentScrollView>
+      
       <View style={styles.footer}>
-        <TouchableOpacity onPress={handleLogout} style={{paddingVertical: 15}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Feather name="log-out" size={22} />
-            <Text style={styles.footerText}>Sair</Text>
+        <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+          {/* Este View é a chave para o alinhamento */}
+          <View style={styles.logoutContent}>
+            <Feather name="log-out" size={22} color="#fff"/>
+            <Text style={styles.logoutText}>Sair</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -40,8 +47,38 @@ export default function CustomDrawerContent(props) {
 }
 
 const styles = StyleSheet.create({
-  header: { padding: 20, paddingBottom: 10 },
-  headerTitle: { color: 'white', fontSize: 22, fontFamily: 'Poppins-Bold' },
-  footer: { padding: 20, borderTopWidth: 1, borderTopColor: '#ccc' },
-  footerText: { fontSize: 16, fontFamily: 'Poppins-Regular', marginLeft: 15 }
+  header: { 
+    padding: 20, 
+    paddingTop: 50,
+    paddingBottom: 20,
+  },
+  headerTitle: { 
+    color: 'white', 
+    fontSize: 28,
+    fontFamily: 'Poppins-Bold' 
+  },
+  drawerItemsContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: 10,
+  },
+  footer: { 
+    padding: 20, 
+    borderTopWidth: 1, 
+    borderTopColor: '#4a5a73',
+    backgroundColor: '#1d3557'
+  },
+  logoutButton: {
+    paddingVertical: 10,
+  },
+  logoutContent: {
+    flexDirection: 'row', // <-- GARANTE O ALINHAMENTO HORIZONTAL
+    alignItems: 'center',
+  },
+  logoutText: { 
+    fontSize: 16, 
+    fontFamily: 'Poppins-Regular', 
+    marginLeft: 15, // <-- GARANTE O ESPAÇAMENTO ENTRE ÍCONE E TEXTO
+    color: 'white',
+  }
 });

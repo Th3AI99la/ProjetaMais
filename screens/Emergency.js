@@ -9,7 +9,7 @@ import {
   ScrollView, 
   StatusBar, 
   Image, 
-  Animated // 1. IMPORTANTE: Importar o 'Animated'
+  Animated 
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import MapView, { Marker } from 'react-native-maps';
