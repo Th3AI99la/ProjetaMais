@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import Login from '../screens/Login'
 import ForgotPassword from '../screens/ForgotPassword';
+import CreateAccount from '../screens/CreateAccount'; 
+
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -11,6 +13,7 @@ export default function Navigation() {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="CreateAccount" component={CreateAccount} />
     </Stack.Navigator>
 );
 }

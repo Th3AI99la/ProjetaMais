@@ -105,7 +105,7 @@ export default function Login() {
         <View style={styles.footer}>
           <View style={styles.footerContent}>
             <Text style={styles.footerText}>Não tem uma conta?</Text>
-            <TouchableOpacity>
+             <TouchableOpacity onPress={() => navigation.navigate('CreateAccount')}>
               <Text style={styles.createAccount}>Criar Conta</Text>
             </TouchableOpacity>
           </View>
