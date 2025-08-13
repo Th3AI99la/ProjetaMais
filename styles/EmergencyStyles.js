@@ -81,11 +81,17 @@ export default StyleSheet.create({
     color: '#264653',
     marginLeft: 10,
   },
-  imagePreview: {
-    width: '100%',
-    height: 200,
-    borderRadius: 10,
+    mediaSummary: {
     marginTop: 15,
+    padding: 10,
+    backgroundColor: 'rgba(233, 196, 106, 0.2)',
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  mediaSummaryText: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 15,
+    color: '#264653',
   },
   submitButton: {
     backgroundColor: '#e63946',
