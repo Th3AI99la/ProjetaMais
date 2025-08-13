@@ -1,5 +1,4 @@
 // Em screens/Login.js
-
 import React from 'react';
 import { 
   View, 
@@ -10,7 +9,7 @@ import {
   KeyboardAvoidingView, 
   Platform,
   Animated,
-  ScrollView // 1. IMPORTAR ScrollView
+  ScrollView 
 } from 'react-native';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import styles from '../styles/loginStyles';
@@ -28,13 +27,11 @@ export default function Login() {
     >
       <StatusBar barStyle="light-content" />
       
-      {/* 2. ENVOLVER CONTEÚDO COM ScrollView E APLICAR O NOVO ESTILO */}
       <ScrollView 
         contentContainerStyle={styles.scrollContainerContent} 
         keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false} 
-        >
-      
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.header}>
           <Text style={styles.title}>Projeta+</Text>
         </View>
@@ -48,7 +45,7 @@ export default function Login() {
             }
           ]}
         >
-          {/* O conteúdo do formulário permanece o mesmo */}
+          {/* Campo de CPF com Ícone */}
           <View style={styles.inputContainer}>
             <Feather name="user" size={20} color="rgba(255, 255, 255, 0.7)" />
             <TextInput 
@@ -62,6 +59,7 @@ export default function Login() {
             />
           </View>
 
+          {/* Campo de Senha com Ícone */}
           <View style={styles.inputContainer}>
             <Feather name="lock" size={20} color="rgba(255, 255, 255, 0.7)" />
             <TextInput 
@@ -83,6 +81,7 @@ export default function Login() {
             <Text style={styles.textButtonLogin}>Entrar</Text>
           </TouchableOpacity>
           
+          {/* Botões de Login Social */}
           <View style={styles.socialContainer}>
             <TouchableOpacity style={[styles.socialButton, styles.facebookButton]}>
               <View style={styles.socialButtonContent}>
@@ -99,14 +98,14 @@ export default function Login() {
           </View>
         </Animated.View>
 
- <View style={styles.footer}>
-        <View style={styles.footerContent}>
-          <Text style={styles.footerText}>Não tem uma conta?</Text>
-          <TouchableOpacity>
-            <Text style={styles.createAccount}>Criar Conta</Text>
-          </TouchableOpacity>
+        <View style={styles.footer}>
+          <View style={styles.footerContent}>
+            <Text style={styles.footerText}>Não tem uma conta?</Text>
+            <TouchableOpacity>
+              <Text style={styles.createAccount}>Criar Conta</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );

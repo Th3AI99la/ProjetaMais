@@ -1,3 +1,5 @@
+// Em styles/HomeStyles.js
+
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -8,43 +10,55 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+  titleContainer: {
+    alignItems: 'center',
+    marginBottom: 60,
+  },
   title: {
-    fontSize: 36,
+    fontSize: 52,
     color: '#fff',
-    fontWeight: 'bold',
-    marginBottom: 40,
+    fontFamily: 'Poppins-Bold', 
+    textAlign: 'center',
   },
-  buttonRed: {
-    backgroundColor: 'red',
-    width: '100%',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginBottom: 15,
+  subtitle: {
+    fontSize: 16,
+    color: 'rgba(255, 255, 255, 0.8)',
+    fontFamily: 'Poppins-Regular',
+    marginTop: 8,
   },
-  buttonGray: {
-    backgroundColor: '#ccc',
+  button: {
     width: '100%',
-    padding: 15,
-    borderRadius: 10,
+    paddingVertical: 18,
+    borderRadius: 12,
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 20,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    // Sombra
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 8,
   },
-  buttonWhite: {
-    backgroundColor: '#fff',
-    width: '100%',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
+  buttonEmergency: {
+    backgroundColor: '#e63946',
+  },
+  buttonAnonymous: {
+    backgroundColor: '#457b9d',
+  },
+  buttonLogin: {
+    backgroundColor: '#f1faee',
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'Poppins-Bold',
+    marginLeft: 12,
   },
   textWhite: {
     color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   textBlack: {
-    color: '#000',
-    fontSize: 18,
-    fontWeight: 'bold',
+    color: '#1d3557',
   },
 });
