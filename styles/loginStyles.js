@@ -10,7 +10,7 @@ export default StyleSheet.create({
     scrollContainerContent: {
     flexGrow: 1, 
     justifyContent: 'space-between', 
-    padding: 30,
+    padding: 15, // Mover o padding para cima para evitar o overflow
   },
   header: {
     alignItems: 'center',
