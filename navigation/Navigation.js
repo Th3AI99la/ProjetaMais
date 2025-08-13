@@ -25,7 +25,7 @@ function MainDrawer() {
         headerShown: false, 
         drawerActiveBackgroundColor: '#e63946',
         drawerActiveTintColor: '#fff',
-        drawerInactiveTintColor: '#333',
+        drawerInactiveTintColor: 'white',
         drawerLabelStyle: {fontFamily: 'Poppins-Regular', fontSize: 15 }
       }}
     >

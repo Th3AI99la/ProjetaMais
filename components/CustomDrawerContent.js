@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   },
   drawerItemsContainer: {
     flex: 1,
-    backgroundColor: '#fff',
     paddingTop: 10,
   },
   footer: { 
