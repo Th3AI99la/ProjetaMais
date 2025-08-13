@@ -11,7 +11,8 @@ import CreateAccount from '../screens/CreateAccount';
 import Emergency from '../screens/Emergency';
 import History from '../screens/History';
 import CustomDrawerContent from '../components/CustomDrawerContent';
-import Header from '../components/Header'; 
+import Header from '../components/Header';
+import Anonymous from '../screens/Anonymous';    
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -35,6 +36,7 @@ function MainDrawer() {
           drawerIcon: ({color}) => <Feather name="home" size={22} color={color} />
         }}
       />
+
       <Drawer.Screen 
         name="Emergência" 
         component={Emergency} 
@@ -48,6 +50,22 @@ function MainDrawer() {
             />
           ),
           drawerIcon: ({color}) => <Feather name="alert-triangle" size={22} color={color} />
+        }}
+      />
+
+      <Drawer.Screen 
+        name="Anônimo" 
+        component={Anonymous} 
+        options={{
+          headerShown: true,
+          header: ({ navigation }) => (
+            <Header 
+              title="Modo Anônimo" 
+              onMenuPress={() => navigation.openDrawer()}
+              backgroundColor="#3700B3" // Uma cor escura, tipo anônimo
+            />
+          ),
+          drawerIcon: ({color}) => <Feather name="shield" size={22} color={color} />
         }}
       />
       <Drawer.Screen 

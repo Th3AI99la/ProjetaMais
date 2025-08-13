@@ -32,12 +32,15 @@ export default function Home() {
         </TouchableOpacity>
       </Animated.View>
 
-      <Animated.View style={[{ width: '100%' }, button2Anim]}>
-        <TouchableOpacity style={[styles.button, styles.buttonAnonymous]}>
-          <Feather name="shield" size={22} color="white" />
-          <Text style={[styles.buttonText, styles.textWhite]}>Anônimo</Text>
-        </TouchableOpacity>
-      </Animated.View>
+        <Animated.View style={[{ width: '100%' }, button2Anim]}>
+          <TouchableOpacity 
+            style={[styles.button, styles.buttonAnonymous]}
+            onPress={() => navigation.navigate('Anônimo')} 
+          >
+            <Feather name="shield" size={22} color="white" />
+            <Text style={[styles.buttonText, styles.textWhite]}>Anônimo</Text>
+          </TouchableOpacity>
+        </Animated.View>
 
       <Animated.View style={[{ width: '100%' }, button3Anim]}>
         <TouchableOpacity

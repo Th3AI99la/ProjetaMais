@@ -1,10 +1,11 @@
+// Em components/Header.js
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-export default function Header({ title, onMenuPress, onProfilePress }) {
+export default function Header({ title, onMenuPress, onProfilePress, backgroundColor = '#d90429' }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor }]}>
       <TouchableOpacity onPress={onMenuPress} style={styles.iconButton}>
         <Feather name="menu" size={28} color="white" />
       </TouchableOpacity>
@@ -22,7 +23,6 @@ const styles = StyleSheet.create({
     height: 100,
     paddingTop: 40,
     paddingHorizontal: 20,
-    backgroundColor: '#d90429', // Fundo vermelho escuro
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
