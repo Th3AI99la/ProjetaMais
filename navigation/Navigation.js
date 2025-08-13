@@ -71,17 +71,18 @@ function MainDrawer() {
           drawerIcon: ({color}) => <Feather name="shield" size={22} color={color} />
         }}
       />
-      <Drawer.Screen 
+  <Drawer.Screen 
         name="Histórico" 
         component={History} 
         options={{
-          drawerActiveBackgroundColor: '#1d3557', // Cor ativa para Histórico
+          drawerActiveBackgroundColor: '#1d3557',
           headerShown: true,
           header: ({ navigation }) => (
             <Header 
               title="Histórico" 
               onMenuPress={() => navigation.openDrawer()} 
               onProfilePress={() => Alert.alert("Perfil Clicado")}
+              backgroundColor="#333333" // <-- ADICIONE/ALTERE A COR AQUI
             />
           ),
           drawerIcon: ({color}) => <Feather name="clock" size={22} color={color} />
