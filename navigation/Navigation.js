@@ -14,6 +14,7 @@ import History from '../screens/History';
 import Anonymous from '../screens/Anonymous'; 
 import CustomDrawerContent from '../components/CustomDrawerContent';
 import Header from '../components/Header'; 
+import Profile from '../screens/Profile'; 
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -99,6 +100,7 @@ export default function Navigation() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="CreateAccount" component={CreateAccount} />
+      <Stack.Screen name="Profile" component={Profile} />
     </Stack.Navigator>
   );
 }

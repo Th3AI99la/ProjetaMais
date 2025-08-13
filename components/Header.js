@@ -1,16 +1,24 @@
 // Em components/Header.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; // 1. IMPORTE o useNavigation
 
-export default function Header({ title, onMenuPress, onProfilePress, backgroundColor = '#d90429' }) {
+export default function Header({ title, onMenuPress, backgroundColor = '#d90429' }) {
+  const navigation = useNavigation(); // 2. USE o hook de navegação
+
+  const handleProfilePress = () => {
+    navigation.navigate('Profile'); // 3. NAVEGUE para a tela 'Profile'
+  };
+
   return (
     <View style={[styles.container, { backgroundColor }]}>
       <TouchableOpacity onPress={onMenuPress} style={styles.iconButton}>
         <Feather name="menu" size={28} color="white" />
       </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
-      <TouchableOpacity onPress={onProfilePress} style={styles.iconButton}>
+      {/* 4. AÇÃO DE CLIQUE agora está definida aqui dentro */}
+      <TouchableOpacity onPress={handleProfilePress} style={styles.iconButton}>
         <Feather name="user" size={28} color="white" />
       </TouchableOpacity>
     </View>
