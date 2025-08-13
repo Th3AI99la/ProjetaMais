@@ -6,8 +6,10 @@ import {
   Text, 
   TextInput, 
   TouchableOpacity, 
-  StatusBar, 
-  Animated // A CORREÇÃO ESTÁ AQUI
+  StatusBar,
+  KeyboardAvoidingView, // <-- Este componente fará o trabalho
+  Platform,
+  Animated 
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
@@ -19,19 +21,22 @@ export default function ForgotPassword() {
   const { phone, email, isEmailValid, errorOpacity, handlePhoneChange, handleEmailChange } = useForgotPasswordForm();
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
       <StatusBar barStyle="light-content" />
-
+      
+      {/* O ScrollView foi removido daqui */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          {/* O ícone 'arrow-left' é mais comum para voltar, mas use o que preferir */}
           <Feather name="arrow-left" size={30} color="white" />
         </TouchableOpacity>
         <Text style={styles.title}>Recuperar Senha</Text>
       </View>
 
       <View style={styles.formContainer}>
-        <Text style={styles.label}>Digite seu número para receber o SMS</Text>
+        <Text style={styles.label}>Recuperar com Celular</Text>
         <View style={styles.inputContainer}>
           <Feather name="smartphone" size={20} color="rgba(255, 255, 255, 0.7)" />
           <TextInput
@@ -41,7 +46,7 @@ export default function ForgotPassword() {
             keyboardType="numeric"
             value={phone}
             onChangeText={handlePhoneChange}
-            maxLength={19} 
+            maxLength={19}
           />
         </View>
 
@@ -51,7 +56,7 @@ export default function ForgotPassword() {
           <View style={styles.line} />
         </View>
 
-        <Text style={styles.label}>Digite seu e-mail para recuperação</Text>
+        <Text style={styles.label}>Recuperar com E-mail</Text>
         <View style={styles.inputContainer}>
           <Feather 
             name="mail" 
@@ -75,11 +80,12 @@ export default function ForgotPassword() {
             Insira um e-mail válido
           </Text>
         </Animated.View>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Enviar</Text>
-        </TouchableOpacity>
       </View>
-    </View>
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Enviar</Text>
+      </TouchableOpacity>
+      
+    </KeyboardAvoidingView>
   );
 }

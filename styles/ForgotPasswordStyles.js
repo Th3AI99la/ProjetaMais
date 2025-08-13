@@ -6,13 +6,14 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1d2362',
-    padding: 20,
+    justifyContent: 'space-between', // Adicionamos de volta
+    padding: 20, // Adicionamos de volta
   },
+  // O estilo 'scrollContainerContent' foi removido
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: 50,
-    paddingHorizontal: 10,
   },
   title: {
     fontSize: 28,
@@ -20,11 +21,10 @@ export default StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     textAlign: 'center',
     flex: 1,
-    marginRight: 30, // Espaço para o ícone de voltar não empurrar o título
+    marginRight: 30,
   },
   formContainer: {
-    flex: 1,
-    justifyContent: 'center',
+    // Não precisa mais de flex: 1 aqui, pois o space-between do container já o posiciona
     paddingHorizontal: 10,
   },
   label: {
@@ -82,16 +82,16 @@ export default StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Poppins-Bold',
   },
-    errorContainer: {
+  errorContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 5,
     marginLeft: 15,
   },
-   errorMessage: {
+  errorMessage: {
     color: '#e63946',
     fontFamily: 'Poppins-Regular',
     fontSize: 14,
     marginLeft: 5,
-  }
+  },
 });
