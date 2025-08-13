@@ -21,7 +21,10 @@ export default function Home() {
       </Animated.View>
 
       <Animated.View style={[{ width: '100%' }, button1Anim]}>
-        <TouchableOpacity style={[styles.button, styles.buttonEmergency]}>
+        <TouchableOpacity 
+          style={[styles.button, styles.buttonEmergency]}
+          onPress={() => navigation.navigate('Emergency')} 
+        >
           <Feather name="alert-triangle" size={22} color="white" />
           <Text style={[styles.buttonText, styles.textWhite]}>Emergência</Text>
         </TouchableOpacity>
