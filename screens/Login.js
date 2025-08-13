@@ -29,7 +29,12 @@ export default function Login() {
       <StatusBar barStyle="light-content" />
       
       {/* 2. ENVOLVER CONTEÚDO COM ScrollView E APLICAR O NOVO ESTILO */}
-      <ScrollView contentContainerStyle={styles.scrollContainerContent} keyboardShouldPersistTaps="handled">
+      <ScrollView 
+        contentContainerStyle={styles.scrollContainerContent} 
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false} 
+        >
+      
         <View style={styles.header}>
           <Text style={styles.title}>Projeta+</Text>
         </View>
@@ -94,11 +99,14 @@ export default function Login() {
           </View>
         </Animated.View>
 
-        <View style={styles.footer}>
+ <View style={styles.footer}>
+        <View style={styles.footerContent}>
+          <Text style={styles.footerText}>Não tem uma conta?</Text>
           <TouchableOpacity>
             <Text style={styles.createAccount}>Criar Conta</Text>
           </TouchableOpacity>
         </View>
+      </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );

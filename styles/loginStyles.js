@@ -16,13 +16,18 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingTop: 40,
   },
-  mainContent: {
-    flex: 1,
-    justifyContent: 'center', // Centraliza o formulário na área restante
-  },
   footer: {
-    alignItems: 'center',
-    paddingBottom: 20,
+    alignItems: 'center', 
+    paddingBottom: 15,
+    paddingTop: 15, // Adiciona um pouco de espaço acima do rodapé
+    marginTop: 15, // Espaço entre o conteúdo principal e o rodapé
+  },
+  footerContent: {
+    flexDirection: 'row', 
+  },
+    footerText: {
+    color: 'rgba(255, 255, 255, 0.7)', // Um pouco mais suave que o branco puro
+    fontSize: 16,
   },
 
   // --- Elementos de Texto ---
@@ -42,7 +47,9 @@ export default StyleSheet.create({
   createAccount: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: 'bold', // Deixa o link em negrito
     textDecorationLine: 'underline',
+    marginLeft: 5, // Adiciona um pequeno espaço
   },
 
   // --- Formulário ---
