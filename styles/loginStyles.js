@@ -6,7 +6,11 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#1d2362',
     padding: 30,
-    justifyContent: 'space-between', // Alinha header no topo e footer no fundo
+  },
+    scrollContainerContent: {
+    flexGrow: 1, 
+    justifyContent: 'space-between', 
+    padding: 30,
   },
   header: {
     alignItems: 'center',
