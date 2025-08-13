@@ -15,10 +15,14 @@ import { AntDesign, Feather } from '@expo/vector-icons';
 import styles from '../styles/loginStyles';
 import useLoginAnimation from '../hooks/useLoginAnimation';
 import useLoginForm from '../hooks/useLoginForm';
+import { useNavigation } from '@react-navigation/native'; 
+
 
 export default function Login() {
+  const navigation = useNavigation();     
   const { fadeAnim, slideAnim } = useLoginAnimation();
   const { cpf, password, handleCpfChange, setPassword } = useLoginForm();
+  
 
   return (
     <KeyboardAvoidingView
@@ -73,7 +77,7 @@ export default function Login() {
             />
           </View>
           
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
             <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
           </TouchableOpacity>
 
