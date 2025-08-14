@@ -1,4 +1,3 @@
-// Em hooks/useEmergencyForm.js
 import { useState, useEffect } from 'react';
 import { Alert, Linking, Platform } from 'react-native';
 import * as Location from 'expo-location';
@@ -14,17 +13,22 @@ export default function useEmergencyForm() {
   const [address, setAddress] = useState('Buscando localização...');
   const [media, setMedia] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
   const getLocation = async () => {
-    setAddress('Buscando localização...');
+    setIsLoadingLocation(true);
+    setAddress('Buscando localização atual...');
+    setLocation(null);
+
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
       Alert.alert('Permissão Negada', 'A permissão de localização é necessária.');
       setAddress('Permissão de localização negada.');
+      setIsLoadingLocation(false);
       return;
     }
     try {
-      let currentPosition = await Location.getCurrentPositionAsync({});
+      let currentPosition = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
       setLocation(currentPosition.coords);
       let addressResult = await Location.reverseGeocodeAsync(currentPosition.coords);
       if (addressResult.length > 0) {
@@ -32,7 +36,11 @@ export default function useEmergencyForm() {
         setAddress(`${street || name}, ${city}, ${region}`);
       }
     } catch (error) {
+      console.log("Erro ao buscar localização:", error);
       setAddress('Não foi possível obter a localização.');
+      Alert.alert('Erro', 'Verifique se o seu GPS está ativado.');
+    } finally {
+      setIsLoadingLocation(false);
     }
   };
 
@@ -100,6 +108,7 @@ export default function useEmergencyForm() {
     location, address,
     openInNativeMaps,
     media, pickMedia,
-    modalVisible, setModalVisible
+    modalVisible, setModalVisible,
+    isLoadingLocation,
   };
 }
