@@ -1,23 +1,11 @@
 // Em screens/Emergency.js
-
 import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
-  ScrollView, 
-  StatusBar, 
-  Image, 
-  Animated 
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, StatusBar, Image, Animated } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import MapView, { Marker } from 'react-native-maps';
 import styles from '../styles/EmergencyStyles';
 
-// Importa todos os nossos componentes e hooks separados
 import useEmergencyForm from '../hooks/useEmergencyForm';
-import useEmergencyAnimation from '../hooks/useEmergencyAnimation'; // 2. IMPORTANTE: Importar o hook da animação
+import useEmergencyAnimation from '../hooks/useEmergencyAnimation';
 import MediaPreviewModal from '../components/MediaPreviewModal';
 import ViolenceTypeModal from '../components/ViolenceTypeModal';
 
@@ -26,11 +14,11 @@ export default function Emergency() {
     violenceType, setViolenceType,
     description, setDescription,
     location, address,
+    openInNativeMaps,
     media, pickMedia,
     modalVisible, setModalVisible
   } = useEmergencyForm();
   
-  // 3. CHAMA O HOOK da animação para pegar os estilos
   const { 
     section1Style, 
     section2Style, 
@@ -55,7 +43,6 @@ export default function Emergency() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      {/* O Header é inserido pelo Navigation.js, não aqui */}
 
       <ViolenceTypeModal
         visible={modalVisible}
@@ -70,7 +57,6 @@ export default function Emergency() {
       />
 
       <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-        {/* 4. APLICA OS ESTILOS ANIMADOS A CADA SEÇÃO */}
         <Animated.View style={[styles.section, section1Style]}>
           <Text style={styles.label}>Tipo de Violência</Text>
           <TouchableOpacity style={styles.pickerButton} onPress={() => setModalVisible(true)}>
@@ -97,17 +83,10 @@ export default function Emergency() {
           <View style={styles.locationBox}>
             <Text style={styles.addressText}>{address}</Text>
             {location && (
-              <MapView
-                style={styles.map}
-                initialRegion={{
-                  latitude: location.latitude,
-                  longitude: location.longitude,
-                  latitudeDelta: 0.005,
-                  longitudeDelta: 0.005,
-                }}
-              >
-                <Marker coordinate={location} />
-              </MapView>
+              <TouchableOpacity style={styles.mediaButton} onPress={openInNativeMaps}>
+                <Feather name="map-pin" size={20} color="#264653" />
+                <Text style={styles.mediaButtonText}>Ver no Mapa</Text>
+              </TouchableOpacity>
             )}
           </View>
         </Animated.View>

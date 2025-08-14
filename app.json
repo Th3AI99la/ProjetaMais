@@ -21,14 +21,8 @@
       },
       "permissions": [
         "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION",
-        "android.permission.FOREGROUND_SERVICE"
+        "android.permission.ACCESS_FINE_LOCATION"
       ],
-      "foregroundService": {
-        "location": {
-          "description": "Este aplicativo usa a localização para registrar o local da emergência."
-        }
-      },
       "package": "com.thalleshenrique6.ProjetaMais"
     },
     "web": {

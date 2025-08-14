@@ -1,9 +1,9 @@
+// Em screens/Anonymous.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StatusBar, Image, Animated } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import MapView, { Marker } from 'react-native-maps';
-import styles from '../styles/AnonymousStyles'; 
-import useEmergencyForm from '../hooks/useEmergencyForm'; 
+import styles from '../styles/AnonymousStyles';
+import useEmergencyForm from '../hooks/useEmergencyForm';
 import ViolenceTypeModal from '../components/ViolenceTypeModal';
 import MediaPreviewModal from '../components/MediaPreviewModal';
 import useEmergencyAnimation from '../hooks/useEmergencyAnimation';
@@ -13,6 +13,7 @@ export default function Anonymous() {
     violenceType, setViolenceType,
     description, setDescription,
     location, address,
+    openInNativeMaps, // <-- Pegamos a função para abrir o mapa nativo
     media, pickMedia,
     modalVisible, setModalVisible
   } = useEmergencyForm();
@@ -62,7 +63,12 @@ export default function Anonymous() {
           <Text style={styles.label}>Localização</Text>
           <View style={styles.locationBox}>
             <Text style={styles.addressText}>{address}</Text>
-            {location && <MapView style={styles.map} initialRegion={{latitude: location.latitude, longitude: location.longitude, latitudeDelta: 0.005, longitudeDelta: 0.005,}}><Marker coordinate={location} /></MapView>}
+            {location && (
+              <TouchableOpacity style={styles.mediaButton} onPress={openInNativeMaps}>
+                <Feather name="map-pin" size={20} color="#000" />
+                <Text style={styles.mediaButtonText}>Ver no Mapa</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </Animated.View>
 
