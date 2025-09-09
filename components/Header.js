@@ -2,15 +2,25 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Header({ title, onMenuPress, backgroundColor = '#d90429' }) {
+// Nossas novas propriedades: onLeftPress e leftIconName
+export default function Header({ title, onLeftPress, leftIconName = 'menu', backgroundColor = '#d90429' }) {
+  const navigation = useNavigation();
+
   return (
     <View style={[styles.container, { backgroundColor }]}>
-      <TouchableOpacity onPress={onMenuPress} style={styles.iconButton}>
-        <Feather name="menu" size={28} color="white" />
+      {/* Botão da Esquerda (Menu ou Voltar) */}
+      <TouchableOpacity onPress={onLeftPress} style={styles.iconButton}>
+        <Feather name={leftIconName} size={28} color="white" />
       </TouchableOpacity>
+      
       <Text style={styles.title}>{title}</Text>
-      <View style={{ width: 28 }} />{/* Espaço vazio para manter o título centralizado */}
+
+      {/* Ícone de Configurações */}
+      <TouchableOpacity onPress={() => navigation.navigate('Settings')} style={styles.iconButton}>
+        <Feather name="settings" size={24} color="white" />
+      </TouchableOpacity>
     </View>
   );
 }

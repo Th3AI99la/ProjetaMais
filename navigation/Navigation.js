@@ -8,9 +8,9 @@ import Home from '../screens/Home';
 import Emergency from '../screens/Emergency';
 import History from '../screens/History';
 import Anonymous from '../screens/Anonymous';
-import Settings from '../screens/Settings'; // <-- IMPORTE a nova tela
+import Settings from '../screens/Settings';
 import CustomDrawerContent from '../components/CustomDrawerContent';
-import Header from '../components/Header';
+import Header from '../components/Header'; 
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -20,31 +20,51 @@ function MainDrawer() {
     <Drawer.Navigator 
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{ 
-        headerShown: false,
         drawerActiveBackgroundColor: '#e63946',
         drawerActiveTintColor: '#fff',
         drawerInactiveTintColor: 'rgba(255, 255, 255, 0.7)',
-        drawerLabelStyle: { fontFamily: 'Poppins-Regular', fontSize: 15 }
+        drawerLabelStyle: {fontFamily: 'Poppins-Regular', fontSize: 15 }
       }}
     >
-      <Drawer.Screen name="Início" component={Home} options={{ drawerActiveBackgroundColor: '#1d3557', drawerIcon: ({color}) => <Feather name="home" size={22} color={color} /> }} />
-      <Drawer.Screen name="Anônimo" component={Anonymous} options={{ drawerActiveBackgroundColor: '#3700B3', headerShown: true, header: ({ navigation }) => <Header title="Modo Anônimo" onMenuPress={() => navigation.openDrawer()} backgroundColor="#3700B3" />, drawerIcon: ({color}) => <Feather name="shield" size={22} color={color} /> }} />
-      <Drawer.Screen name="Emergência" component={Emergency} options={{ drawerActiveBackgroundColor: '#e63946', headerShown: true, header: ({ navigation }) => <Header title="Emergência" onMenuPress={() => navigation.openDrawer()} />, drawerIcon: ({color}) => <Feather name="alert-triangle" size={22} color={color} /> }} />
-      <Drawer.Screen name="Histórico" component={History} options={{ drawerActiveBackgroundColor: '#1d3557', headerShown: true, header: ({ navigation }) => <Header title="Histórico" onMenuPress={() => navigation.openDrawer()} backgroundColor="#333333" />, drawerIcon: ({color}) => <Feather name="clock" size={22} color={color} /> }} />
-      <Drawer.Screen name="Configurações" component={Settings} options={{ // <-- ADICIONE
-        drawerActiveBackgroundColor: '#1d3557', 
-        headerShown: true,
-        header: ({ navigation }) => <Header title="Configurações" onMenuPress={() => navigation.openDrawer()} backgroundColor="#333333" />,
-        drawerIcon: ({color}) => <Feather name="settings" size={22} color={color} /> 
-      }}/>
+      <Drawer.Screen 
+        name="Início" 
+        component={Home} 
+        options={{
+          headerShown: true,
+          header: ({ navigation }) => (
+            <Header title="Início" onLeftPress={() => navigation.openDrawer()} backgroundColor="#1d3557"/>
+          ),
+          drawerActiveBackgroundColor: '#1d3557',
+          drawerIcon: ({color}) => <Feather name="home" size={22} color={color} />
+        }}
+      />
+      <Drawer.Screen name="Anônimo" component={Anonymous} 
+        options={{
+          headerShown: true,
+          header: ({ navigation }) => <Header title="Modo Anônimo" onLeftPress={() => navigation.openDrawer()} backgroundColor="#3700B3" />
+        }}
+      />
+      <Drawer.Screen name="Emergência" component={Emergency} 
+        options={{
+          headerShown: true,
+          header: ({ navigation }) => <Header title="Emergência" onLeftPress={() => navigation.openDrawer()} />
+        }}
+      />
+      <Drawer.Screen name="Histórico" component={History} 
+        options={{
+          headerShown: true,
+          header: ({ navigation }) => <Header title="Histórico" onLeftPress={() => navigation.openDrawer()} backgroundColor="#333333" />
+        }}
+      />
     </Drawer.Navigator>
   );
 }
 
 export default function Navigation() {
   return (
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Main" component={MainDrawer} />
-      </Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Main" component={MainDrawer} />
+      <Stack.Screen name="Settings" component={Settings} />
+    </Stack.Navigator>
   );
 }
