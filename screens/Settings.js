@@ -29,7 +29,7 @@ export default function Settings() {
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
           thumbColor={notificationsEnabled ? "#f5dd4b" : "#f4f3f4"}
-          onValueChange={() => setNotificationsEnabled(previousState => !previousState)}
+          onValueChange={() => setNotificationsEnabled(prev => !prev)}
           value={notificationsEnabled}
         />
       ) : (
@@ -45,7 +45,7 @@ export default function Settings() {
       <Header 
         title="Configurações" 
         onLeftPress={() => navigation.goBack()} 
-        leftIconName="arrow-left" // <-- voltar ícone
+        leftIconName="arrow-left"
         backgroundColor="#333333"
       />
       
@@ -57,7 +57,7 @@ export default function Settings() {
       />
 
       <View style={styles.footer}>
-        <Text style={styles.versionText}>AppProjeta+ Versão {appVersion}</Text>
+        <Text style={styles.versionText}>Projeta+ Versão {appVersion}</Text>
       </View>
     </View>
   );

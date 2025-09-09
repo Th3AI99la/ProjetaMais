@@ -29,12 +29,12 @@ export default StyleSheet.create({
     marginLeft: 20,
   },
   footer: {
-    padding: 20,
+    padding: 25,
     alignItems: 'center',
   },
   versionText: {
     fontSize: 14,
     fontFamily: 'Poppins-Regular',
-    color: '#9E9E9E',
+    color: "#BB86FC",
   },
 });
