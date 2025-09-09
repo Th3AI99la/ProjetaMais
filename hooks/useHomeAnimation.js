@@ -10,6 +10,25 @@ export default function useHomeAnimation() {
   const button1Opacity = useRef(new Animated.Value(0)).current;
   const button2Opacity = useRef(new Animated.Value(0)).current;
   const button3Opacity = useRef(new Animated.Value(0)).current;
+  const pressAnim = useRef(new Animated.Value(1)).current;
+
+
+  const handlePressIn = () => {
+    Animated.timing(pressAnim, {
+      toValue: 0.96, // Diminui para 96% do tamanho
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.timing(pressAnim, {
+      toValue: 1, // Volta ao tamanho original
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+  };
+  const pressStyle = { transform: [{ scale: pressAnim }] };
 
   useEffect(() => {
     Animated.sequence([
@@ -32,5 +51,6 @@ export default function useHomeAnimation() {
     button1Anim: { opacity: button1Opacity },
     button2Anim: { opacity: button2Opacity },
     button3Anim: { opacity: button3Opacity },
+    pressStyle, handlePressIn, handlePressOut
   };
 }

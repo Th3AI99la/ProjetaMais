@@ -42,4 +42,9 @@ export default StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.9)',
     marginTop: 4,
   },
+    scrollContainer: {
+    padding: 20,
+    flexGrow: 1, // Garante que o container possa crescer
+    justifyContent: 'center', // Centraliza o conteúdo verticalmente
+  },
 });
