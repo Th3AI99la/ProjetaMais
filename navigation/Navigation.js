@@ -3,7 +3,6 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Feather } from '@expo/vector-icons';
-import { Alert } from 'react-native';
 
 // Importe as telas e componentes
 import Home from '../screens/Home';
@@ -17,69 +16,61 @@ import Header from '../components/Header';
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
-function MainDrawer() {
+// 1. Criamos um StackNavigator com TODAS as telas principais
+function MainStackNavigator() {
   return (
-    <Drawer.Navigator 
-      drawerContent={props => <CustomDrawerContent {...props} />}
-      screenOptions={{ 
-        headerShown: false,
-        // drawerActiveBackgroundColor foi REMOVIDO daqui para permitir cores individuais
-        drawerActiveTintColor: '#fff',
-        drawerInactiveTintColor: 'rgba(255, 255, 255, 0.7)',
-        drawerLabelStyle: {fontFamily: 'Poppins-Regular', fontSize: 15 }
-      }}
+    <Stack.Navigator
+      // O Header é definido aqui para TODAS as telas do Stack
+      screenOptions={({ navigation, route }) => ({
+        header: () => {
+          const isFirstScreen = navigation.getState().index === 0;
+          return (
+            <Header
+              title={route.name}
+              leftIconName={isFirstScreen ? 'menu' : 'arrow-left'} // Ícone de menu na Home, de voltar nas outras
+              onLeftPress={isFirstScreen ? () => navigation.toggleDrawer() : () => navigation.goBack()}
+              backgroundColor={
+                route.name === 'Anônimo' ? '#3700B3' : 
+                route.name === 'Emergência' ? '#e63946' : 
+                route.name === 'Histórico' || route.name === 'Configurações' ? '#333333' : 
+                '#1d3557'
+              }
+            />
+          );
+        },
+      })}
     >
-      <Drawer.Screen 
-        name="Início" 
-        component={Home} 
-        options={{
-          drawerActiveBackgroundColor: '#1d3557',
-          headerShown: true,
-          header: ({ navigation }) => <Header title="Início" onLeftPress={() => navigation.openDrawer()} backgroundColor="#1d3557"/>,
-          drawerIcon: ({color}) => <Feather name="home" size={22} color={color} />
-        }}
-      />
-
-      <Drawer.Screen 
-        name="Emergência" 
-        component={Emergency} 
-        options={{
-          drawerActiveBackgroundColor: '#e63946', // Vermelho
-          headerShown: true,
-          header: ({ navigation }) => <Header title="Emergência" onLeftPress={() => navigation.openDrawer()} />,
-          drawerIcon: ({color}) => <Feather name="alert-triangle" size={22} color={color} /> // ÍCONE RESTAURADO
-        }}
-      />
-      <Drawer.Screen 
-        name="Anônimo" 
-        component={Anonymous} 
-        options={{
-          drawerActiveBackgroundColor: '#3700B3', // Roxo
-          headerShown: true,
-          header: ({ navigation }) => <Header title="Modo Anônimo" onLeftPress={() => navigation.openDrawer()} backgroundColor="#3700B3" />,
-          drawerIcon: ({color}) => <Feather name="shield" size={22} color={color} /> // ÍCONE RESTAURADO
-        }}
-      />
-
-      <Drawer.Screen 
-        name="Histórico" 
-        component={History} 
-        options={{
-          drawerActiveBackgroundColor: '#1d3557', // Azul
-          headerShown: true,
-          header: ({ navigation }) => <Header title="Histórico" onLeftPress={() => navigation.openDrawer()} backgroundColor="#333333" />,
-          drawerIcon: ({color}) => <Feather name="clock" size={22} color={color} /> // ÍCONE RESTAURADO
-        }}
-      />
-    </Drawer.Navigator>
+      <Stack.Screen name="Início" component={Home} />
+      <Stack.Screen name="Emergência" component={Emergency} />
+      <Stack.Screen name="Anônimo" component={Anonymous} />
+      <Stack.Screen name="Histórico" component={History} />
+      <Stack.Screen name="Configurações" component={Settings} />
+    </Stack.Navigator>
   );
 }
 
+// 2. O Drawer agora "envolve" o StackNavigator
 export default function Navigation() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Main" component={MainDrawer} />
-      <Stack.Screen name="Settings" component={Settings} />
-    </Stack.Navigator>
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false, // O header é controlado pelo Stack, não pelo Drawer
+        drawerActiveBackgroundColor: '#e63946',
+        drawerActiveTintColor: '#fff',
+        drawerInactiveTintColor: 'rgba(255, 255, 255, 0.7)',
+        drawerLabelStyle: { fontFamily: 'Poppins-Regular', fontSize: 15 }
+      }}
+    >
+      <Drawer.Screen 
+        name="MainStack" // O Drawer agora tem apenas uma "tela", que é o nosso Stack inteiro
+        component={MainStackNavigator}
+        options={{
+          // Opções para como o item "Início" aparece no menu
+          title: 'Início', 
+          drawerIcon: ({color}) => <Feather name="home" size={22} color={color} />
+        }}
+      />
+    </Drawer.Navigator>
   );
 }
