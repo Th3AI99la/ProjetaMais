@@ -1,4 +1,3 @@
-// Em screens/Settings.js
 import React from 'react';
 import { View, Text, StatusBar, FlatList, TouchableOpacity, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -43,11 +42,10 @@ export default function Settings() {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
       
-      {/* Usando o Header com o ícone de "voltar" */}
       <Header 
         title="Configurações" 
         onLeftPress={() => navigation.goBack()} 
-        leftIconName="arrow-left" // <-- Dizemos ao Header para usar o ícone de seta
+        leftIconName="arrow-left" // <-- voltar ícone
         backgroundColor="#333333"
       />
       

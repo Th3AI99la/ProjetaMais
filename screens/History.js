@@ -1,4 +1,3 @@
-// Em screens/History.js
 import React from 'react';
 import { View, Text, StatusBar, FlatList, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';

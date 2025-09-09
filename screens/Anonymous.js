@@ -1,9 +1,8 @@
-// Em screens/Anonymous.js
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StatusBar, Linking, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
-import styles from '../styles/AnonymousStyles'; // Vamos precisar atualizar este arquivo
+import styles from '../styles/AnonymousStyles'; 
 import useAnonymousFlow from '../hooks/useAnonymousFlow';
 import ViolenceTypeModal from '../components/ViolenceTypeModal';
 import VictimTypeModal from '../components/VictimTypeModal';

@@ -1,4 +1,3 @@
-// Em screens/Home.js
 import React from "react";
 import { View, Text, TouchableOpacity, StatusBar, Animated, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
