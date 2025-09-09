@@ -1,37 +1,37 @@
 // Em components/VictimTypeModal.js
-import React from 'react';
-import { Modal, View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Modal, View, Text, TouchableOpacity, FlatList, StyleSheet, Animated } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-// Lista de vítimas conforme o PDF
 const VICTIM_TYPES = ['Mulher', 'Criança e Adolescente', 'Pessoa Idosa', 'População em Geral'];
 
 export default function VictimTypeModal({ visible, onClose, onSelect }) {
+  const scaleAnim = useRef(new Animated.Value(0.8)).current;
+
+  useEffect(() => {
+    if (visible) {
+      Animated.spring(scaleAnim, { toValue: 1, friction: 6, useNativeDriver: true }).start();
+    } else {
+      scaleAnim.setValue(0.8);
+    }
+  }, [visible]);
+
   const handleSelect = (type) => {
     onSelect(type);
     onClose();
   };
 
   return (
-    <Modal animationType="slide" transparent={true} visible={visible} onRequestClose={onClose}>
+    <Modal animationType="fade" transparent={true} visible={visible} onRequestClose={onClose}>
       <View style={styles.centeredView}>
-        <View style={styles.modalView}>
+        <Animated.View style={[styles.modalView, { transform: [{ scale: scaleAnim }] }]}>
           <Text style={styles.modalTitle}>Quem é a Vítima?</Text>
-          <FlatList
-            data={VICTIM_TYPES}
-            keyExtractor={(item) => item}
-            renderItem={({ item }) => (
-              <TouchableOpacity style={styles.optionButton} onPress={() => handleSelect(item)}>
-                <Text style={styles.optionText}>{item}</Text>
-              </TouchableOpacity>
-            )}
-            ItemSeparatorComponent={() => <View style={styles.separator} />}
-          />
+          <FlatList data={VICTIM_TYPES} /* ... */ />
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <Feather name="x" size={24} color="#e63946" />
             <Text style={styles.closeButtonText}>Fechar</Text>
           </TouchableOpacity>
-        </View>
+        </Animated.View>
       </View>
     </Modal>
   );

@@ -15,7 +15,8 @@ export default function Home() {
       <SafeAreaView style={{ flex: 1, backgroundColor: styles.container.backgroundColor }}>
          <View style={styles.container}>
             <StatusBar barStyle="light-content" />
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}
+             scrollEnabled={false}>
                <View style={styles.content}>
                   <Animated.View style={[styles.titleContainer, titleAnim]}>
                      <Text style={styles.title}>Projeta+</Text>

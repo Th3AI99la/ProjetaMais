@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal, View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Modal, View, Text, TouchableOpacity, FlatList, StyleSheet, Animated } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 const VIOLENCE_TYPES = [
@@ -13,24 +13,27 @@ const VIOLENCE_TYPES = [
 ];
 
 export default function ViolenceTypeModal({ visible, onClose, onSelect }) {
+  const scaleAnim = useRef(new Animated.Value(0.8)).current;
+
+  useEffect(() => {
+    if (visible) {
+      Animated.spring(scaleAnim, { toValue: 1, friction: 6, useNativeDriver: true }).start();
+    } else {
+      scaleAnim.setValue(0.8);
+    }
+  }, [visible]);
+
   const handleSelect = (type) => {
     onSelect(type);
     onClose();
   };
 
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={visible}
-      onRequestClose={onClose}
-    >
+    <Modal animationType="fade" transparent={true} visible={visible} onRequestClose={onClose}>
       <View style={styles.centeredView}>
-        <View style={styles.modalView}>
+        <Animated.View style={[styles.modalView, { transform: [{ scale: scaleAnim }] }]}>
           <Text style={styles.modalTitle}>Selecione o Tipo de Violência</Text>
-          <FlatList
-            data={VIOLENCE_TYPES}
-            keyExtractor={(item) => item}
+          <FlatList data={VIOLENCE_TYPES} keyExtractor={(item) => item}
             renderItem={({ item }) => (
               <TouchableOpacity style={styles.optionButton} onPress={() => handleSelect(item)}>
                 <Text style={styles.optionText}>{item}</Text>
@@ -42,7 +45,7 @@ export default function ViolenceTypeModal({ visible, onClose, onSelect }) {
             <Feather name="x" size={24} color="#e63946" />
             <Text style={styles.closeButtonText}>Fechar</Text>
           </TouchableOpacity>
-        </View>
+        </Animated.View>
       </View>
     </Modal>
   );
