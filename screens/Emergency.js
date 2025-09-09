@@ -1,4 +1,3 @@
-// Em screens/Emergency.js
 import React, { useRef } from 'react';
 import { View, Text, TouchableOpacity, StatusBar, Linking, Alert, Animated, Vibration } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -6,11 +5,9 @@ import { Feather } from '@expo/vector-icons';
 import styles from '../styles/EmergencyStyles';
 
 export default function Emergency() {
-  // 1. Criamos valores de animação para a escala de cada botão
   const pressAnim190 = useRef(new Animated.Value(1)).current;
   const pressAnim192 = useRef(new Animated.Value(1)).current;
 
-  // 2. Função genérica para animar o toque
   const handlePressAnimation = (animValue, toValue) => {
     Animated.spring(animValue, {
       toValue,
@@ -18,9 +15,8 @@ export default function Emergency() {
     }).start();
   };
 
-  // 3. Função de chamada com Vibração e Alerta de Confirmação
   const handleCall = (number) => {
-    Vibration.vibrate(100); // Vibra o celular por 100ms
+    Vibration.vibrate(100);
     Alert.alert(
       `Ligar para ${number}`,
       "Você tem certeza que deseja iniciar a chamada de emergência?",
@@ -41,8 +37,6 @@ export default function Emergency() {
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
         <View style={styles.content}>
-          
-          {/* 4. Aplicamos a animação e os eventos de toque */}
           <Animated.View style={{ transform: [{ scale: pressAnim190 }] }}>
             <TouchableOpacity 
               style={styles.callButton} 
@@ -74,7 +68,6 @@ export default function Emergency() {
               </View>
             </TouchableOpacity>
           </Animated.View>
-
         </View>
       </View>
     </SafeAreaView>
