@@ -1,108 +1,45 @@
+// Em styles/EmergencyStyles.js
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fef2f2', // Um vermelho bem claro, quase branco
+    backgroundColor: '#fef2f2', // Fundo vermelho claro
   },
-  scrollContainer: {
+  content: {
+    flex: 1,
+    justifyContent: 'center',
     padding: 20,
   },
-  section: {
-    marginBottom: 25,
-  },
-  label: {
-    fontSize: 18,
-    fontFamily: 'Poppins-Bold',
-    color: '#4f000b',
-    marginBottom: 10,
-  },
-  pickerButton: {
-    backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  pickerButtonText: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Regular',
-    color: '#333',
-  },
-  pickerButtonPlaceholder: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Regular',
-    color: '#999',
-  },
-  descriptionInput: {
-    backgroundColor: 'white',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    padding: 15,
-    fontSize: 16,
-    fontFamily: 'Poppins-Regular',
-    height: 120,
-    textAlignVertical: 'top',
-  },
-  locationBox: {
-    backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-  },
-  addressText: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Regular',
-    color: '#333',
-    marginBottom: 10,
-  },
-  map: {
-    width: '100%',
-    height: 150,
-    borderRadius: 10,
-    marginTop: 10,
-  },
-  mediaButton: {
-    backgroundColor: '#e9c46a',
-    padding: 15,
-    borderRadius: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  mediaButtonText: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Bold',
-    color: '#264653',
-    marginLeft: 10,
-  },
-    mediaSummary: {
-    marginTop: 15,
-    padding: 10,
-    backgroundColor: 'rgba(233, 196, 106, 0.2)',
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  mediaSummaryText: {
-    fontFamily: 'Poppins-Regular',
-    fontSize: 15,
-    color: '#264653',
-  },
-  submitButton: {
+  callButton: {
     backgroundColor: '#e63946',
-    padding: 18,
-    borderRadius: 50,
+    paddingVertical: 20,
+    paddingHorizontal: 25,
+    borderRadius: 15,
+    marginBottom: 25,
+    flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8,
   },
-  submitButtonText: {
-    color: 'white',
-    fontSize: 18,
+  callButtonIcon: {
+    marginRight: 20,
+  },
+  callButtonTextContainer: {
+    flex: 1,
+  },
+  callButtonTitle: {
     fontFamily: 'Poppins-Bold',
+    fontSize: 22,
+    color: 'white',
+  },
+  callButtonDescription: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 14,
+    color: 'rgba(255, 255, 255, 0.9)',
+    marginTop: 4,
   },
 });
