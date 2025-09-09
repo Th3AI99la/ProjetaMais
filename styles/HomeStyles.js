@@ -4,17 +4,19 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1d2362',
+    marginBottom: 50,
+    marginTop: -80
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding: 20,      
   },
   titleContainer: {
     alignItems: 'center',
-    marginBottom: 60,
-    marginTop: 40,
+    marginBottom: 50,
+    marginTop: -80
   },
   title: {
     fontSize: 52,

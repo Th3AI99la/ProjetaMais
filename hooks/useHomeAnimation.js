@@ -1,21 +1,24 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { Animated } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import { useCallback } from 'react';
 
 export default function useHomeAnimation() {
   const titleAnim = useRef(new Animated.Value(0)).current;
   const button1Anim = useRef(new Animated.Value(0)).current;
   const button2Anim = useRef(new Animated.Value(0)).current;
-  const pressAnim1 = useRef(new Animated.Value(1)).current; // Animação para o botão 1
-  const pressAnim2 = useRef(new Animated.Value(1)).current; // Animação para o botão 2
+  
+  // Valores para a animação de clique
+  const pressAnim1 = useRef(new Animated.Value(1)).current;
+  const pressAnim2 = useRef(new Animated.Value(1)).current;
 
   useFocusEffect(
     useCallback(() => {
+      // Reseta a animação de entrada
       titleAnim.setValue(0);
       button1Anim.setValue(0);
       button2Anim.setValue(0);
 
+      // Inicia a animação de entrada
       Animated.stagger(150, [
         Animated.timing(titleAnim, { toValue: 1, duration: 500, useNativeDriver: true }),
         Animated.timing(button1Anim, { toValue: 1, duration: 500, useNativeDriver: true }),
@@ -31,7 +34,7 @@ export default function useHomeAnimation() {
     }],
   });
   
-  // Funções genéricas para animar o toque
+  // Funções para controlar a animação de clique
   const handlePressIn = (animValue) => {
     Animated.spring(animValue, { toValue: 0.96, useNativeDriver: true }).start();
   };
