@@ -3,7 +3,9 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Feather } from '@expo/vector-icons';
+import { Alert } from 'react-native';
 
+// Importe as telas e componentes
 import Home from '../screens/Home';
 import Emergency from '../screens/Emergency';
 import History from '../screens/History';
@@ -20,7 +22,8 @@ function MainDrawer() {
     <Drawer.Navigator 
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{ 
-        drawerActiveBackgroundColor: '#e63946',
+        headerShown: false,
+        // drawerActiveBackgroundColor foi REMOVIDO daqui para permitir cores individuais
         drawerActiveTintColor: '#fff',
         drawerInactiveTintColor: 'rgba(255, 255, 255, 0.7)',
         drawerLabelStyle: {fontFamily: 'Poppins-Regular', fontSize: 15 }
@@ -30,30 +33,42 @@ function MainDrawer() {
         name="Início" 
         component={Home} 
         options={{
-          headerShown: true,
-          header: ({ navigation }) => (
-            <Header title="Início" onLeftPress={() => navigation.openDrawer()} backgroundColor="#1d3557"/>
-          ),
           drawerActiveBackgroundColor: '#1d3557',
+          headerShown: true,
+          header: ({ navigation }) => <Header title="Início" onLeftPress={() => navigation.openDrawer()} backgroundColor="#1d3557"/>,
           drawerIcon: ({color}) => <Feather name="home" size={22} color={color} />
         }}
       />
-      <Drawer.Screen name="Anônimo" component={Anonymous} 
+
+      <Drawer.Screen 
+        name="Emergência" 
+        component={Emergency} 
         options={{
+          drawerActiveBackgroundColor: '#e63946', // Vermelho
           headerShown: true,
-          header: ({ navigation }) => <Header title="Modo Anônimo" onLeftPress={() => navigation.openDrawer()} backgroundColor="#3700B3" />
+          header: ({ navigation }) => <Header title="Emergência" onLeftPress={() => navigation.openDrawer()} />,
+          drawerIcon: ({color}) => <Feather name="alert-triangle" size={22} color={color} /> // ÍCONE RESTAURADO
         }}
       />
-      <Drawer.Screen name="Emergência" component={Emergency} 
+      <Drawer.Screen 
+        name="Anônimo" 
+        component={Anonymous} 
         options={{
+          drawerActiveBackgroundColor: '#3700B3', // Roxo
           headerShown: true,
-          header: ({ navigation }) => <Header title="Emergência" onLeftPress={() => navigation.openDrawer()} />
+          header: ({ navigation }) => <Header title="Modo Anônimo" onLeftPress={() => navigation.openDrawer()} backgroundColor="#3700B3" />,
+          drawerIcon: ({color}) => <Feather name="shield" size={22} color={color} /> // ÍCONE RESTAURADO
         }}
       />
-      <Drawer.Screen name="Histórico" component={History} 
+
+      <Drawer.Screen 
+        name="Histórico" 
+        component={History} 
         options={{
+          drawerActiveBackgroundColor: '#1d3557', // Azul
           headerShown: true,
-          header: ({ navigation }) => <Header title="Histórico" onLeftPress={() => navigation.openDrawer()} backgroundColor="#333333" />
+          header: ({ navigation }) => <Header title="Histórico" onLeftPress={() => navigation.openDrawer()} backgroundColor="#333333" />,
+          drawerIcon: ({color}) => <Feather name="clock" size={22} color={color} /> // ÍCONE RESTAURADO
         }}
       />
     </Drawer.Navigator>
