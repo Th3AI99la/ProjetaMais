@@ -57,7 +57,7 @@ export default function Settings() {
       />
 
       <View style={styles.footer}>
-        <Text style={styles.versionText}>Projeta+ Versão {appVersion}</Text>
+        <Text style={styles.versionText}>Proteja+ Versão {appVersion}</Text>
       </View>
     </View>
   );
