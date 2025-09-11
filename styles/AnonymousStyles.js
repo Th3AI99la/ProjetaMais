@@ -12,7 +12,7 @@ export default StyleSheet.create({
    container: { flex: 1, backgroundColor: darkTheme.background },
    scrollContainer: { padding: 20 },
    section: { marginBottom: 25 },
-   label: { fontSize: 18, fontFamily: "Poppins-Bold", color: darkTheme.primaryText, marginBottom: 10 },
+   label: { fontSize: 20, fontFamily: "Poppins-Bold", color: darkTheme.primaryText, marginBottom: 10 },
    pickerButton: {
       backgroundColor: darkTheme.surface,
       padding: 15,
@@ -30,14 +30,17 @@ export default StyleSheet.create({
       borderWidth: 1,
       borderColor: "#555",
       borderRadius: 10,
-      backgroundColor: darkTheme.surface
+      paddingTop: 8,
+      backgroundColor: darkTheme.surface,
+      paddingHorizontal: 8,  
    },
+
    channelButton: {
       flexDirection: "row",
       alignItems: "center",
       padding: 20,
       borderBottomWidth: 1,
-      borderBottomColor: "#444"
+      borderBottomColor: "#444",
    },
    channelTextContainer: { marginLeft: 15 },
    channelTitle: { fontFamily: "Poppins-Bold", fontSize: 16, color: darkTheme.primaryText },

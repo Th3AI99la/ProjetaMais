@@ -12,37 +12,39 @@ export default function Home() {
    return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <ScrollView contentContainerStyle={styles.content} scrollEnabled={false}>
-            <Animated.View style={[styles.titleContainer, titleAnim]}>
-              <Text style={styles.title}>Proteja+</Text>
-              <Text style={styles.subtitle}>Sua segurança em primeiro lugar</Text>
-            </Animated.View>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }} scrollEnabled={false}>
+          <View style={styles.content}>
+              <Animated.View style={[styles.titleContainer, titleAnim]}>
+                <Text style={styles.title}>Proteja+</Text>
+                <Text style={styles.subtitle}>Sua segurança em primeiro lugar</Text>
+              </Animated.View>
 
-            <Animated.View style={[{ width: "100%", transform: [{ scale: pressAnim1 }] }, button1Anim]}>
-              <TouchableOpacity
-                  style={[styles.button, styles.buttonEmergency]}
-                  onPress={() => navigation.navigate("Emergência")}
-                  onPressIn={() => handlePressIn(pressAnim1)}
-                  onPressOut={() => handlePressOut(pressAnim1)}
-                  activeOpacity={1}
-              >
-                  <Feather name="alert-triangle" size={22} color="white" />
-                  <Text style={[styles.buttonText, styles.textWhite]}>Emergência</Text>
-              </TouchableOpacity>
-            </Animated.View>
+              <Animated.View style={[{ width: "100%", transform: [{ scale: pressAnim1 }] }, button1Anim]}>
+                <TouchableOpacity
+                    style={[styles.button, styles.buttonEmergency]}
+                    onPress={() => navigation.navigate("Emergência")}
+                    onPressIn={() => handlePressIn(pressAnim1)}
+                    onPressOut={() => handlePressOut(pressAnim1)}
+                    activeOpacity={1}
+                >
+                    <Feather name="alert-triangle" size={22} color="white" />
+                    <Text style={[styles.buttonText, styles.textWhite]}>Emergência</Text>
+                </TouchableOpacity>
+              </Animated.View>
 
-            <Animated.View style={[{ width: "100%", transform: [{ scale: pressAnim2 }] }, button2Anim]}>
-              <TouchableOpacity
-                  style={[styles.button, styles.buttonAnonymous]}
-                  onPress={() => navigation.navigate("Anônimo")}
-                  onPressIn={() => handlePressIn(pressAnim2)}
-                  onPressOut={() => handlePressOut(pressAnim2)}
-                  activeOpacity={1}
-              >
-                  <Feather name="shield" size={22} color="white" />
-                  <Text style={[styles.buttonText, styles.textWhite]}>Anônimo</Text>
-              </TouchableOpacity>
-            </Animated.View>
+              <Animated.View style={[{ width: "100%", transform: [{ scale: pressAnim2 }] }, button2Anim]}>
+                <TouchableOpacity
+                    style={[styles.button, styles.buttonAnonymous]}
+                    onPress={() => navigation.navigate("Anônimo")}
+                    onPressIn={() => handlePressIn(pressAnim2)}
+                    onPressOut={() => handlePressOut(pressAnim2)}
+                    activeOpacity={1}
+                >
+                    <Feather name="shield" size={22} color="white" />
+                    <Text style={[styles.buttonText, styles.textWhite]}>Anônimo</Text>
+                </TouchableOpacity>
+              </Animated.View>
+          </View>
         </ScrollView>
       </View>
    );

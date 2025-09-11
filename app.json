@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Proteja+",
-    "slug": "Proteja+",
+    "slug": "proteja-mais",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,14 +19,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.thalleshenrique6.Proteja+"
+      "package": "com.thalleshenrique6.ProtejaMais"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "e574deeb-98d7-49ff-8219-12d6e1a3d0e9"
+        "projectId": "b0341760-0b2a-4c66-8199-17210d04cdb5"
       }
     }
   }

@@ -5,7 +5,6 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#1d2362',
     paddingBottom: 80,
-    paddingTop: 0,
   },
   content: {
     flex: 1,
