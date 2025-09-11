@@ -21,7 +21,7 @@ export default function CustomDrawerContent(props) {
             contentContainerStyle={{ backgroundColor: "#1d3557", flex: 1 }}
          >
             <View style={styles.header}>
-               <Text style={styles.headerTitle}>Projeta+</Text>
+               <Text style={styles.headerTitle}>Proteja+</Text>
             </View>
 
             <View style={styles.drawerItemsContainer}>

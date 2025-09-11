@@ -8,7 +8,6 @@ import useHomeAnimation from "../hooks/useHomeAnimation";
 
 export default function Home() {
    const navigation = useNavigation();
-   // 1. PEGUE AS NOVAS FUNÇÕES E VALORES DO HOOK
    const { titleAnim, button1Anim, button2Anim, pressAnim1, pressAnim2, handlePressIn, handlePressOut } = useHomeAnimation();
 
    return (
@@ -18,11 +17,10 @@ export default function Home() {
             <ScrollView contentContainerStyle={{ flexGrow: 1 }} scrollEnabled={false}>
                <View style={styles.content}>
                   <Animated.View style={[styles.titleContainer, titleAnim]}>
-                     <Text style={styles.title}>Projeta+</Text>
+                     <Text style={styles.title}>Proteja+</Text>
                      <Text style={styles.subtitle}>Sua segurança em primeiro lugar</Text>
                   </Animated.View>
 
-                  {/* 2. APLIQUE A ANIMAÇÃO DE CLIQUE NO BOTÃO EMERGÊNCIA */}
                   <Animated.View style={[{ width: "100%", transform: [{ scale: pressAnim1 }] }, button1Anim]}>
                      <TouchableOpacity
                         style={[styles.button, styles.buttonEmergency]}
@@ -36,7 +34,6 @@ export default function Home() {
                      </TouchableOpacity>
                   </Animated.View>
 
-                  {/* 3. APLIQUE A ANIMAÇÃO DE CLIQUE NO BOTÃO ANÔNIMO */}
                   <Animated.View style={[{ width: "100%", transform: [{ scale: pressAnim2 }] }, button2Anim]}>
                      <TouchableOpacity
                         style={[styles.button, styles.buttonAnonymous]}
