@@ -43,6 +43,6 @@ export default StyleSheet.create({
       borderBottomColor: "#444",
    },
    channelTextContainer: { marginLeft: 15 },
-   channelTitle: { fontFamily: "Poppins-Bold", fontSize: 16, color: darkTheme.primaryText },
-   channelNumber: { fontFamily: "Poppins-Regular", fontSize: 14, color: darkTheme.accent }
+   channelTitle: { fontFamily: "Poppins-Bold", fontSize: 17, color: darkTheme.primaryText },
+   channelNumber: { fontFamily: "Poppins-Regular", fontSize: 15, color: darkTheme.accent }
 });
