@@ -1,15 +1,27 @@
 // Em components/CustomDrawerContent.js
 
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert, BackHandler,Platform } from "react-native";
 import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { Feather } from "@expo/vector-icons";
 
 export default function CustomDrawerContent(props) {
+   
    const handleLogout = () => {
       Alert.alert("Sair", "Você tem certeza que deseja sair?", [
          { text: "Cancelar", style: "cancel" },
-         { text: "Sim, Sair", onPress: () => console.log("Usuário deslogado") }
+         { 
+            text: "Sim, Sair", 
+            onPress: () => {
+               // A mágica acontece aqui:
+               if (Platform.OS === 'android') {
+                  BackHandler.exitApp(); // Fecha o app no Android
+               } else {
+                  // Opcional: Avisa o usuário de iOS
+                  Alert.alert("Aviso", "No iOS, por favor, use o gesto nativo para fechar o app.");
+               }
+            } 
+         }
       ]);
    };
 
