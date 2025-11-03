@@ -1,26 +1,30 @@
 // Em components/CustomDrawerContent.js
 
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Alert, BackHandler,Platform } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert, BackHandler, Platform } from "react-native";
 import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { Feather } from "@expo/vector-icons";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function CustomDrawerContent(props) {
-   
+   // Usando useSafeAreaInsets para lidar com áreas seguras
+   const insets = useSafeAreaInsets();
+
+   // Função para lidar com o logout
    const handleLogout = () => {
       Alert.alert("Sair", "Você tem certeza que deseja sair?", [
          { text: "Cancelar", style: "cancel" },
-         { 
-            text: "Sim, Sair", 
+         {
+            text: "Sim, Sair",
             onPress: () => {
-               // A mágica acontece aqui:
-               if (Platform.OS === 'android') {
+               // Lógica para sair do app
+               if (Platform.OS === "android") {
                   BackHandler.exitApp(); // Fecha o app no Android
                } else {
                   // Opcional: Avisa o usuário de iOS
                   Alert.alert("Aviso", "No iOS, por favor, use o gesto nativo para fechar o app.");
                }
-            } 
+            }
          }
       ]);
    };
@@ -41,9 +45,8 @@ export default function CustomDrawerContent(props) {
             </View>
          </DrawerContentScrollView>
 
-         <View style={styles.footer}>
+         <View style={[styles.footer, { paddingBottom: insets.bottom }]}>
             <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
-               {/* Este View é a chave para o alinhamento */}
                <View style={styles.logoutContent}>
                   <Feather name="log-out" size={22} color="#fff" />
                   <Text style={styles.logoutText}>Sair</Text>

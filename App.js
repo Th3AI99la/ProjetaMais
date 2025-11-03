@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import Navigation from './navigation/Navigation';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,9 +17,11 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <Navigation />
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }
