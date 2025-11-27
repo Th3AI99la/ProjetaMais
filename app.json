@@ -20,15 +20,15 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.thalleshenrique6.ProtejaMais",
-      "softwareKeyboardLayoutMode": "resize",
-      "androidStatusBar": {
-        "translucent": true,
-        "backgroundColor": "#00000000"
-      },
-      "androidNavigationBar": {
-        "translucent": true,
-        "backgroundColor": "#00000000"
-      }
+      "softwareKeyboardLayoutMode": "resize" 
+    }, 
+    "androidStatusBar": {
+      "translucent": true,
+      "backgroundColor": "#00000000"
+    },
+    "androidNavigationBar": {
+      "translucent": true,
+      "backgroundColor": "#00000000"
     },
     "web": {
       "favicon": "./assets/favicon.png"
