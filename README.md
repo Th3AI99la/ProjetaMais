@@ -42,13 +42,44 @@ O app foi construído com ferramentas modernas para garantir performance e porta
 - **Interface Edge-to-Edge:** Uso completo da tela respeitando Safe Areas.
 
 ## 📸 Demonstração
-| Fluxo de Denúncia | Protótipo de Experiência | Home |
-|---|---|---|
-| ![Fluxo](./assets/img/1.1_fluxo_de_denuncia.jpeg) | ![Protótipo](./assets/img/1.2_protipo_experenciea_do_usuario.jpeg) | ![Home](./assets/img/1_home.jpeg) |
+## 📸 Demonstração
 
-| Tela de Emergência | Opções de Denúncia | Tipo de Vítima |
-|---|---|---|
-| ![Emergência](./assets/img/2_telaemergencia.jpeg) | ![Opções](./assets/img/5_opcoestelanonimo.jpeg) | ![Vítima](./assets/img/6_opcoesvitimaanonimo.jpeg) |
+Nesta seção, apresentamos os artefatos de planejamento e as telas finais do aplicativo **Proteja+**.
+
+### 1. Planejamento e Fluxo de Processo (BPMN)
+Modelagem detalhada do fluxo de denúncia e atendimento, garantindo a conformidade com os processos de segurança comunitária.
+<br>
+<img src="./assets/img/1.1_fluxo_de_denuncia.jpeg" width="800" alt="Fluxo de Denúncia">
+
+### 2. Protótipo de Experiência do Usuário (UX)
+Desenvolvimento inicial da interface focado na facilidade de uso em situações de alta tensão.
+<br>
+<img src="./assets/img/1.2_protipo_experenciea_do_usuario.jpeg" width="800" alt="Protótipo de Experiência">
+
+---
+
+### 3. Interface Final do Aplicativo
+Capturas de tela da versão final implementada com **React Native** e **Expo**.
+
+#### **Tela Inicial (Home)**
+Acesso rápido aos módulos de emergência e denúncia através de uma interface intuitiva.
+<br>
+<img src="./assets/img/1_home.jpeg" width="400" alt="Home">
+
+#### **Módulo de Emergência**
+Interface dedicada para ações imediatas de socorro e contatos de urgência.
+<br>
+<img src="./assets/img/2_telaemergencia.jpeg" width="400" alt="Tela de Emergência">
+
+#### **Modo Anônimo e Opções de Denúncia**
+Fluxo seguro que permite ao usuário reportar ocorrências sem identificação.
+<br>
+<img src="./assets/img/5_opcoestelanonimo.jpeg" width="400" alt="Opções Anônimo">
+
+#### **Identificação de Vítima e Formulário**
+Refinamento dos dados da denúncia para garantir que as autoridades recebam informações precisas.
+<br>
+<img src="./assets/img/6_opcoesvitimaanonimo.jpeg" width="400" alt="Tipo de Vítima">
 
 ## 🎓 Resultados e Impacto Social
 A execução resultou em um aplicativo intuitivo que contribui para:
