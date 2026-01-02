@@ -40,46 +40,63 @@ O app foi construído com ferramentas modernas para garantir performance e porta
 - **Modo Anônimo:** Denúncia segura sem identificação do usuário.
 - **Segurança de Dados:** Limpeza de estado e encerramento seguro da aplicação.
 - **Interface Edge-to-Edge:** Uso completo da tela respeitando Safe Areas.
+## 📸 Demonstração do Sistema
 
-## 📸 Demonstração
-## 📸 Demonstração
+Nesta seção, são apresentados os **artefatos de planejamento**, bem como as **telas finais** do aplicativo **Proteja+**, evidenciando o processo de concepção, design e implementação da solução.
 
-Nesta seção, apresentamos os artefatos de planejamento e as telas finais do aplicativo **Proteja+**.
+---
 
 ### 1. Planejamento e Fluxo de Processo (BPMN)
-Modelagem detalhada do fluxo de denúncia e atendimento, garantindo a conformidade com os processos de segurança comunitária.
+Modelagem detalhada do fluxo de **denúncia e atendimento**, assegurando alinhamento com os processos de **segurança comunitária** e padronização operacional.
+
 <br>
-<img src="./assets/img/1.1_fluxo_de_denuncia.jpeg" width="800" alt="Fluxo de Denúncia">
+<img src="./assets/img/1.1_fluxo_de_denuncia.jpeg" width="800" alt="Fluxo de Denúncia em BPMN">
+
+---
 
 ### 2. Protótipo de Experiência do Usuário (UX)
-Desenvolvimento inicial da interface focado na facilidade de uso em situações de alta tensão.
+Protótipo inicial da interface, desenvolvido com foco em **usabilidade**, **acessibilidade** e **agilidade**, especialmente para cenários de alta tensão e resposta rápida.
+
 <br>
-<img src="./assets/img/1.2_protipo_experenciea_do_usuario.jpeg" width="800" alt="Protótipo de Experiência">
+<img src="./assets/img/1.2_protipo_experenciea_do_usuario.jpeg" width="800" alt="Protótipo de Experiência do Usuário">
 
 ---
 
 ### 3. Interface Final do Aplicativo
-Capturas de tela da versão final implementada com **React Native** e **Expo**.
+Capturas de tela da versão final do aplicativo, implementada com **React Native** e **Expo**, demonstrando a aplicação prática dos conceitos de UX e fluxos definidos no planejamento.
 
-#### **Tela Inicial (Home)**
-Acesso rápido aos módulos de emergência e denúncia através de uma interface intuitiva.
-<br>
-<img src="./assets/img/1_home.jpeg" width="400" alt="Home">
+---
 
-#### **Módulo de Emergência**
-Interface dedicada para ações imediatas de socorro e contatos de urgência.
-<br>
-<img src="./assets/img/2_telaemergencia.jpeg" width="400" alt="Tela de Emergência">
+#### 🏠 Tela Inicial (Home)
+Interface principal com **acesso rápido** aos módulos de emergência e denúncia, priorizando clareza, simplicidade e navegação intuitiva.
 
-#### **Modo Anônimo e Opções de Denúncia**
-Fluxo seguro que permite ao usuário reportar ocorrências sem identificação.
 <br>
-<img src="./assets/img/5_opcoestelanonimo.jpeg" width="400" alt="Opções Anônimo">
+<img src="./assets/img/1_home.jpeg" width="400" alt="Tela Inicial do Aplicativo">
 
-#### **Identificação de Vítima e Formulário**
-Refinamento dos dados da denúncia para garantir que as autoridades recebam informações precisas.
+---
+
+#### 🚨 Módulo de Emergência
+Tela dedicada a ações imediatas de socorro, permitindo contato ágil com serviços de emergência e recursos críticos.
+
 <br>
-<img src="./assets/img/6_opcoesvitimaanonimo.jpeg" width="400" alt="Tipo de Vítima">
+<img src="./assets/img/2_telaemergencia.jpeg" width="400" alt="Módulo de Emergência">
+
+---
+
+#### 🔒 Modo Anônimo e Opções de Denúncia
+Fluxo seguro que possibilita o envio de denúncias **sem identificação**, reforçando a privacidade do usuário e incentivando a participação cidadã.
+
+<br>
+<img src="./assets/img/5_opcoestelanonimo.jpeg" width="400" alt="Opções de Denúncia Anônima">
+
+---
+
+#### 📝 Identificação de Vítima e Formulário de Denúncia
+Formulário estruturado para detalhamento da ocorrência, garantindo que as autoridades recebam **informações precisas, organizadas e confiáveis**.
+
+<br>
+<img src="./assets/img/6_opcoesvitimaanonimo.jpeg" width="400" alt="Identificação da Vítima">
+
 
 ## 🎓 Resultados e Impacto Social
 A execução resultou em um aplicativo intuitivo que contribui para:
