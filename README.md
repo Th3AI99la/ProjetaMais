@@ -23,7 +23,17 @@ O projeto adotou **metodologias ágeis** e foi validado junto ao cliente final. 
 - **Fluxo do Processo (BPMN):** Modelagem do fluxo de atendimento às vítimas.
 - **Protótipo de Telas:** Design de interface focado em usabilidade e acessibilidade.
 
+## 💻 Stack Tecnológica
+O app foi construído com ferramentas modernas para garantir performance e portabilidade:
 
+- **Framework:** **Expo (SDK 53/54)** para um desenvolvimento ágil e multiplataforma.
+- **Core:** **React Native** com foco em componentes nativos.
+- **Linguagem:** **JavaScript** (ES6+).
+- **Navegação:** **React Navigation** utilizando padrões de *Drawer* e *Native Stack* para uma fluidez intuitiva.
+- **Interface e Estilização:** - **Poppins Fonts:** Tipografia focada em legibilidade.
+  - **Feather Icons:** Conjunto de ícones minimalistas para identificação rápida de funções.
+  - **React Native Safe Area Context:** Garantia de que a interface ocupe 100% da tela de forma segura em qualquer dispositivo.
+- **Animações:** **React Native Reanimated** para transições suaves e interações táteis (feedback visual em botões).
 
 ## 🚀 Funcionalidades Principais
 - **Central de Emergência:** Ação imediata de socorro.
