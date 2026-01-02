@@ -44,11 +44,11 @@ O app foi construído com ferramentas modernas para garantir performance e porta
 ## 📸 Demonstração
 | Fluxo de Denúncia | Protótipo de Experiência | Home |
 |---|---|---|
-| ![Fluxo](./assets/1.1_fluxo_de_denuncia.jpeg) | ![Protótipo](./assets/1.2_protipo_experenciea_do_usuario.jpeg) | ![Home](./assets/1_home.jpeg) |
+| ![Fluxo](./assets/img/1.1_fluxo_de_denuncia.jpeg) | ![Protótipo](./assets/img/1.2_protipo_experenciea_do_usuario.jpeg) | ![Home](./assets/img/1_home.jpeg) |
 
 | Tela de Emergência | Opções de Denúncia | Tipo de Vítima |
 |---|---|---|
-| ![Emergência](./assets/2_telaemergencia.jpeg) | ![Opções](./assets/5_opcoestelanonimo.jpeg) | ![Vítima](./assets/6_opcoesvitimaanonimo.jpeg) |
+| ![Emergência](./assets/img/2_telaemergencia.jpeg) | ![Opções](./assets/img/5_opcoestelanonimo.jpeg) | ![Vítima](./assets/img/6_opcoesvitimaanonimo.jpeg) |
 
 ## 🎓 Resultados e Impacto Social
 A execução resultou em um aplicativo intuitivo que contribui para:
